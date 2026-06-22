@@ -1,0 +1,17 @@
+from itertools import product
+
+K, M = map(int, input().split())
+
+lists = []
+
+for _ in range(K):
+    arr = list(map(int, input().split()))
+    lists.append(arr[1:])  # ignore Ni
+
+ans = 0
+
+for combination in product(*lists):
+    value = sum(x * x for x in combination) % M
+    ans = max(ans, value)
+
+print(ans)
